@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Sellebeww">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a1245"/><stop offset="1" stop-color="#0d1b3d"/>
+    </linearGradient>
+    <linearGradient id="fg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff1a8"/><stop offset=".55" stop-color="#ffd23f"/><stop offset="1" stop-color="#ff7a3d"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect x="14" y="14" width="484" height="484" rx="100" fill="none" stroke="#ff4fa3" stroke-width="6" opacity=".7"/>
+  <g fill="#fff1e8" opacity=".85">
+    <rect x="84" y="86" width="8" height="8"/><rect x="410" y="120" width="8" height="8"/>
+    <rect x="132" y="418" width="8" height="8"/><rect x="392" y="402" width="8" height="8"/>
+  </g>
+  <!-- pixel S -->
+  <g filter="url(#glow)" fill="url(#fg)" shape-rendering="crispEdges">
+    <rect x="176" y="96" width="176" height="48"/>
+    <rect x="128" y="144" width="64" height="48"/>
+    <rect x="176" y="192" width="160" height="48"/>
+    <rect x="320" y="240" width="64" height="48"/>
+    <rect x="128" y="288" width="208" height="48"/>
+    <rect x="352" y="144" width="32" height="32" fill="#ff4fa3"/>
+    <rect x="128" y="288" width="32" height="48" fill="#ff4fa3"/>
+  </g>
+  <text x="256" y="428" text-anchor="middle" font-family="'Press Start 2P', monospace" font-size="40" fill="#fff1e8" letter-spacing="2">SELLEBEWW</text>
+  <rect x="136" y="448" width="240" height="8" fill="#ff4fa3"/>
+</svg>
