@@ -2,53 +2,53 @@
 
 ![Sellebeww Arcade](docs/screenshot.png)
 
-Arcade pixel-art interaktif: jawab empat pertanyaan singkat, lalu mainkan game mini buatanmu sendiri di mesin arcade 3D.
+An interactive pixel-art arcade. Answer four short questions, then play your own custom mini game on a 3D arcade cabinet.
 
 ## About
 
-Sellebeww Arcade mengubah jawaban pemain menjadi game yang bisa langsung dimainkan.
+Sellebeww Arcade turns a player's answers into a game that is ready to play.
 
-1. **Jawab 4 pertanyaan:** nama, genre, karakter utama, dan suasana (vibe).
-2. **Kartu desain:** jawaban dirangkum jadi satu kartu desain game (judul, karakter, musuh, item, palet warna, mekanik).
-3. **Game dibuat:** Gemini menghasilkan kode game dari kartu itu. Selama menunggu, kamu bisa main game contoh bawaan.
-4. **Main di mesin arcade 3D:** marquee, panel samping, dan layar CRT mengikuti kartu desainmu.
-5. **Bagikan:** simpan skor terbaik sebagai kartu gambar (PNG) untuk dibagikan.
+1. **Answer 4 questions.** Name, genre, main character and vibe.
+2. **Design card.** The answers are summarized into one game design card with a title, hero, enemies, collectible, color palette and mechanics.
+3. **Game generation.** Gemini writes the game code from that card. While you wait, you can play a built-in sample game.
+4. **Play on a 3D cabinet.** The marquee, side panel and CRT screen all follow your design card.
+5. **Share.** Save your best score as a PNG card to share.
 
-Genre tersedia: platformer, runner, shooter, breakout, dodger, maze.
+Available genres are platformer, runner, shooter, breakout, dodger and maze.
 
-## Teknologi
+## Tech Stack
 
-React 19 + TypeScript, Vite, three.js (mesin arcade 3D), XState (alur layar), Express (server dan proxy API), Google Gemini (`@google/genai`). Game berjalan terisolasi di iframe sandbox dengan engine pixel sendiri di [engine/](engine/).
+React 19 and TypeScript, Vite, three.js for the 3D cabinet, XState for screen flow, Express for the server and API proxy, and Google Gemini through `@google/genai`. Games run in a sandboxed iframe on a custom pixel engine in [engine/](engine/).
 
-## Jalankan
+## Getting Started
 
-Butuh Node.js 20+ dan API key Gemini.
+Requires Node.js 20 or newer and a Gemini API key.
 
 ```bash
 npm install
-cp .env.example .env.local   # isi GEMINI_API_KEY
+cp .env.example .env.local   # set GEMINI_API_KEY
 npm run dev
 ```
 
-Buka `http://localhost:8787` (ubah dengan `PORT=xxxx`). Tanpa API key, aplikasi tetap tampil tetapi game baru tidak bisa dibuat.
+Open localhost on port 8787 in your browser (change it with `PORT=xxxx`). Without an API key the app still loads, but new games cannot be generated.
 
-## Perintah
+## Commands
 
-| Perintah | Fungsi |
+| Command | Description |
 |---|---|
-| `npm run dev` | Server development |
-| `npm run build` | Build produksi ke `dist/` |
-| `npm start` | Jalankan hasil build |
-| `npm run typecheck` | Cek tipe TypeScript |
-| `npm run build-cart` | Bangun ulang engine game di `public/cart/` |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build in `dist/` |
+| `npm start` | Run the production build |
+| `npm run typecheck` | Run the TypeScript type check |
+| `npm run build-cart` | Rebuild the game engine in `public/cart/` |
 
-## Struktur
+## Project Structure
 
-- `src/`: antarmuka React, panggung 3D (`stage/`), kartu desain (`card/`), skin mesin (`skin/`), kartu share (`share/`)
-- `engine/`: engine game pixel dan 6 game contoh per genre
-- `server/`: server Express dan proxy Gemini (dengan batas pemakaian per IP)
-- `agent/`, `agents/`: instruksi untuk agen pembuat game
-- `public/`: aset, game contoh, dan host iframe game
+- `src/` holds the React UI, the 3D stage (`stage/`), the design card (`card/`), cabinet skins (`skin/`) and the share card (`share/`)
+- `engine/` holds the pixel game engine and six sample games, one per genre
+- `server/` holds the Express server and the Gemini proxy with per-IP usage limits
+- `agent/` and `agents/` hold the instructions for the game-building agent
+- `public/` holds assets, sample games and the iframe game host
 
 ## Author & License
 
