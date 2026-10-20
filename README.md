@@ -1,6 +1,10 @@
 # Sellebeww Arcade
 
-Jawab empat pertanyaan singkat, lalu mainkan game pixel-art buatanmu sendiri di mesin arcade 3D.
+![Sellebeww Arcade](docs/screenshot.png)
+
+## About
+
+Sellebeww Arcade adalah arcade pixel-art interaktif. Kamu menjawab empat pertanyaan singkat (nama, genre, karakter, dan suasana), lalu aplikasi membuatkan satu game mini unik yang langsung bisa dimainkan di mesin arcade 3D lengkap dengan marquee, panel samping, dan layar CRT yang tampilannya mengikuti pilihanmu. Hasilnya bisa dibagikan sebagai kartu skor.
 
 ## Jalankan
 
@@ -12,7 +16,7 @@ cp .env.example .env.local   # isi GEMINI_API_KEY
 npm run dev
 ```
 
-Build produksi: `npm run build` lalu `npm start`.
+Buka `http://localhost:8787`. Build produksi: `npm run build` lalu `npm start`.
 
 ## Author & License
 
