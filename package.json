@@ -10,12 +10,8 @@
     "build": "node scripts/build-cart.mjs && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "NODE_ENV=production node dist/server.cjs",
     "typecheck": "tsc -b",
-    "test": "vitest run tests/engine.test.ts",
-    "test:e2e": "playwright test",
-    "smoke": "node scripts/smoke.mjs",
+    "test": "vitest run",
     "bake:agent": "node scripts/bake-agent.mjs",
-    "eval:agent": "node scripts/eval-agent.mjs",
-    "obj-to-glb": "node scripts/obj-to-glb.mjs",
     "sync-games": "node scripts/sync-games.mjs",
     "build-cart": "node scripts/build-cart.mjs"
   },
