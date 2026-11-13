@@ -40,11 +40,30 @@ Open localhost on port 8787 in your browser (change it with `PORT=xxxx`). Withou
 | `npm run build` | Create a production build in `dist/` |
 | `npm start` | Run the production build |
 | `npm run typecheck` | Run the TypeScript type check |
+| `npm test` | Run the unit and engine tests (Vitest) |
 | `npm run build-cart` | Rebuild the game engine in `public/cart/` |
+| `npm run sync-games` | Sync the engine and house games into `public/` and `agent/` |
+| `npm run bake-agent` | Create or update the `gamesmith-v1` managed agent (needs `GEMINI_API_KEY`) |
+
+## Testing
+
+`npm test` runs Vitest. The suite checks that
+
+- all six house games pass the headless playtest verifier in [engine/headless.mjs](engine/headless.mjs),
+- `public/house-games/` matches `engine/games/`,
+- generated cartridges are extracted and validated (forbidden APIs, size, `create` export) before they are played,
+- a build falls back to a house game when the model fails, times out, or the visitor is offline,
+- the cabinet skin falls back panel by panel when image generation fails.
+
+CI (`.github/workflows/ci.yml`) runs typecheck, tests and the production build on every push and pull request.
+
+## How a build works
+
+`src/build/buildSession.ts` asks the `gamesmith-v1` agent for a cartridge, retries once, validates the result with `src/build/cartSource.ts`, and otherwise falls back to the house game for the chosen genre. `src/build/skinSession.ts` paints the marquee, side panel and attract screen in parallel and falls back to the procedural house skin per panel.
 
 ## Project Structure
 
-- `src/` holds the React UI, the 3D stage (`stage/`), the design card (`card/`), cabinet skins (`skin/`) and the share card (`share/`)
+- `src/` holds the React UI, the build pipeline (`build/`), the 3D stage (`stage/`), the design card (`card/`), cabinet skins (`skin/`) and the share card (`share/`)
 - `engine/` holds the pixel game engine and six sample games, one per genre
 - `server/` holds the Express server and the Gemini proxy with per-IP usage limits
 - `agent/` and `agents/` hold the instructions for the game-building agent
